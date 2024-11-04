@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.health.repository.HealthRepository">
+
+    <select id="findHealthDataByUserId" parameterType="String" resultType="map">
+        SELECT maxpressure, minpressure, sugar, rate, temp, weight
+        FROM healthinfo
+        WHERE user_id = #{userId}
+    </select>
+
+</mapper>
