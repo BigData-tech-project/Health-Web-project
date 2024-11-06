@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.health.mapper.HealthMapper">
+
+	<!-- select -->
+
+	<select id="getHealthById" resultType="com.example.health.model.HealthVo">
+		<![CDATA[
+			SELECT *
+			FROM healthinfo
+			WHERE user_id = #{id}
+		]]>
+	</select>
+	
+	<!-- insert -->
+
+	<insert id="insertHealth" parameterType="com.example.health.model.HealthVo">
+		INSERT INTO healthinfo (user_id, maxPressure, minPressure, sugar, rate, temp, weight)
+		VALUES (#{userId}, #{maxPressure}, #{minPressure}, #{sugar}, #{rate}, #{temp}, #{weight})
+	</insert>
+
+	<!-- select all records by user ID -->
+
+	<select id="findAllByUserId" parameterType="String" resultType="com.example.health.model.HealthVo">
+		SELECT * FROM healthinfo WHERE user_id = #{userId} ORDER BY date DESC
+	</select>
+
+</mapper>
