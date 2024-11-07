@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>만성 질환 관리 페이지</title>
+    <!-- Google Fonts 추가 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap">
     <!-- Bootstrap CSS 추가 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <style>
@@ -31,11 +33,28 @@
             font-size: 30px;
         }
 
+        /* 네비게이션 바 메뉴 항목 스타일 */
         .navbar-custom .navbar-nav > li > a {
             color: #fff;
             font-weight: bold;
+            font-size: 20px;
+            margin-right: 15px;
+            transition: color 0.3s ease;
+            font-family: 'Montserrat', sans-serif; /* 글꼴 설정 */
         }
 
+        /* 마우스를 올렸을 때 텍스트만 강조 효과 */
+        .navbar-custom .navbar-nav > li > a:hover {
+            color: #18bc9c;
+            background-color: transparent !important;
+        }
+
+        /* 네비게이션 바 메뉴 왼쪽으로 이동 */
+        .navbar-nav {
+            margin-right: 25px;
+        }
+
+        /* 컨텐츠 스타일 */
         .container {
             max-width: 1200px;
             padding: 20px;
@@ -61,7 +80,7 @@
         }
 
         .card {
-            flex: 1 1 200px; /* 카드의 최소 너비를 200px로 설정하여 반응형으로 만듦 */
+            flex: 1 1 200px;
             max-width: 250px;
             padding: 20px;
             border-radius: 10px;
@@ -96,7 +115,7 @@
 
         /* 혈압 관리 카드의 글자 색상 */
         .card4 p {
-            color: #FFFFFF; /* 흰색으로 설정 */
+            color: #FFFFFF;
         }
     </style>
 </head>
@@ -106,8 +125,12 @@
 <nav class="navbar navbar-custom">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">START BOOTSTRAP</a>
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/">START BOOTSTRAP</a>
         </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="${pageContext.request.contextPath}/">Home</a></li>
+            <li><a href="${pageContext.request.contextPath}/mypage">My Page</a></li>
+        </ul>
     </div>
 </nav>
 
