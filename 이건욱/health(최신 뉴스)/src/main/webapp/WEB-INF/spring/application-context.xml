@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd
+           http://www.springframework.org/schema/task
+           http://www.springframework.org/schema/task/spring-task.xsd">
+
+    <!-- 컴포넌트 스캔 설정 -->
+    <context:component-scan base-package="com.example.health" />
+
+    <!-- 스케줄링 활성화 -->
+    <task:annotation-driven />
+
+    <!-- 캐시 제거 작업 스케줄 -->
+    <bean id="cacheClearTask" class="com.example.health.service.CacheClearTask" />
+
+    <!-- 스케줄러 설정 -->
+    <task:scheduler id="scheduler" pool-size="1" />
+
+    <!-- 60분마다 캐시를 지우는 작업 설정 (3600000ms = 60분) -->
+    <task:scheduled-tasks>
+        <task:scheduled ref="cacheClearTask" method="clearCache" fixed-rate="10000" />
+    </task:scheduled-tasks>
+
+</beans>
